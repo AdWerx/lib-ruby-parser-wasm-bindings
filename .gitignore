@@ -3,10 +3,12 @@ node_modules
 yarn.lock
 Cargo.lock
 *.wasm
+codegen/codegen
 
 # Rust codegen
 js/nodes.js
 js/messages.js
+js/index.d.ts
 bindings/src/nodes.rs
 bindings/src/messages.rs
 

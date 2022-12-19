@@ -1,0 +1,19 @@
+{
+  "name": "lib-ruby-parser-wasm-bindings",
+  "collaborators": [
+    "Ilya Bylich <ibylich@gmail.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "lib_ruby_parser_wasm_bg.wasm",
+    "lib_ruby_parser_wasm.js",
+    "index.js",
+    "index.d.ts",
+    "types.js",
+    "nodes.js",
+    "messages.js",
+    "tokens.js"
+  ],
+  "types": "index.d.ts",
+  "main": "index.js"
+}

@@ -46,7 +46,7 @@ where
     }
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(raw_module = "./types")]
 extern "C" {
     #[wasm_bindgen(js_name = Loc)]
     pub type JsLoc;
@@ -111,29 +111,20 @@ impl IntoJs for u8 {
     }
 }
 
-#[wasm_bindgen]
-extern "C" {
-    #[wasm_bindgen(js_name = Bytes)]
-    pub type JsBytes;
-
-    #[wasm_bindgen(constructor, js_class = Bytes)]
-    fn new(raw: Vec<u8>) -> JsBytes;
-}
-
 impl IntoJs for RustBytes {
-    type Output = JsBytes;
-    fn into_js(self) -> JsBytes {
-        JsBytes::new(self.raw)
+    type Output = Vec<u8>;
+    fn into_js(self) -> Vec<u8> {
+        self.raw
     }
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(raw_module = "./types")]
 extern "C" {
     #[wasm_bindgen(js_name = Token)]
     pub type JsToken;
 
     #[wasm_bindgen(constructor, js_class = Token)]
-    fn new(token_type: i32, token_value: JsBytes, loc: JsLoc) -> JsToken;
+    fn new(token_type: i32, token_value: Vec<u8>, loc: JsLoc) -> JsToken;
 }
 
 impl IntoJs for RustToken {
@@ -147,7 +138,7 @@ impl IntoJs for RustToken {
     }
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(raw_module = "./types")]
 extern "C" {
     #[wasm_bindgen(js_name = Diagnostic)]
     pub type JsDiagnostic;
@@ -179,7 +170,7 @@ impl IntoJs for RustErrorLevel {
     }
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(raw_module = "./types")]
 extern "C" {
     #[wasm_bindgen(js_name = Comment)]
     pub type JsComment;
@@ -207,7 +198,7 @@ impl IntoJs for RustCommentType {
     }
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(raw_module = "./types")]
 extern "C" {
     #[wasm_bindgen(js_name = MagicComment)]
     pub type JsMagicComment;
@@ -240,7 +231,7 @@ impl IntoJs for RustMagicCommentKind {
     }
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(raw_module = "./types")]
 extern "C" {
     #[wasm_bindgen(js_name = DecodedInput)]
     pub type JsDecodedInput;
@@ -263,7 +254,7 @@ impl IntoJs for RustDecodedInput {
     }
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(raw_module = "./types")]
 extern "C" {
     #[wasm_bindgen(js_name = SourceLine)]
     pub type JsSourceLine;
@@ -279,7 +270,7 @@ impl IntoJs for RustSourceLine {
     }
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(raw_module = "./types")]
 extern "C" {
     #[wasm_bindgen(js_name = ParserResult)]
     pub type JsParserResult;
